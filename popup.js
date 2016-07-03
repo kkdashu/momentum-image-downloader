@@ -1,4 +1,5 @@
 chrome.extension.onRequest.addListener((url) => {
+    console.log(url);
     if (url) {
         chrome.downloads.download({url}, (arg) => console.log(arg));
     }
@@ -9,8 +10,7 @@ window.onload = () => {
     chrome.windows.getCurrent((currentWindow) => {
         chrome.tabs.query({
             active: true,
-            windowId: currentWindow.id,
-            url: 'https://momentumdash.com/'
+            windowId: currentWindow.id
         }, (activeTabs) => {
             if (activeTabs.length === 0) return;
             chrome.tabs.executeScript(
