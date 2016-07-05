@@ -1,9 +1,7 @@
 chrome.extension.onRequest.addListener((url) => {
-    console.log(url);
     if (url) {
         chrome.downloads.download({url}, (arg) => console.log(arg));
     }
-    // window.close();
 })
 
 window.onload = () => {

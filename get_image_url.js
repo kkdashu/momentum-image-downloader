@@ -8,9 +8,8 @@ if (/momentumdash.com/.test(hostname)) {
     targetNode = document.getElementById('bgDiv');
 }
 
-const reg = /url\("(.*)"\)/;
-const url = targetNode && targetNode.style.backgroundImage.match(reg)[1];
-console.log(url);
+const url = getImageUrl(targetNode);
+
 if (url) {
     chrome.extension.sendRequest(url ? resolveUrl(url) : '');
 }
@@ -20,4 +19,10 @@ function resolveUrl(url) {
         return url;
     }
     return window.location.href + '/' + url;
+}
+
+function getImageUrl(ele) {
+    if (!ele) return null;
+    const reg = /url\("(.*)"\)/;
+    return window.getComputedStyle(ele).backgroundImage.match(reg)[1];
 }
