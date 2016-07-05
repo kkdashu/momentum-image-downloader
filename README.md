@@ -4,8 +4,8 @@
 #Usage
 1. git clone git@github.com:ccampbell/chromelogger.git
 2. 打开 chrome 进入 chrome://extensions/
-3. 勾选开发者模式
-4. 点击加载已解压的扩展程序，选择 git clone 的目录。
+3. 勾选「开发者模式」
+4. 点击「加载已解压的扩展程序...」按钮，选择 git clone 的目录。
 
 #Support
 1. https://momentumdash.com/ 
