@@ -1,10 +1,20 @@
-chrome.extension.onRequest.addListener((url) => {
+
+const download = url => {
     if (url) {
         chrome.downloads.download({url}, (arg) => console.log(arg));
     }
-})
+}
 
 window.onload = () => {
+    document.getElementById('download').addEventListener('click', () => {
+        urlRequest();
+        if (!chrome.extension.onRequest.hasListener(download)) {
+            chrome.extension.onRequest.addListener(download)
+        }
+    });
+}
+
+function urlRequest() {
     chrome.windows.getCurrent((currentWindow) => {
         chrome.tabs.query({
             active: true,
@@ -16,4 +26,5 @@ window.onload = () => {
             );
         });
     })
+
 }

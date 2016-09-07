@@ -1,5 +1,6 @@
-const hostname = document.location.hostname;
-let targetNode = null;
+console.log('begin');
+var hostname = document.location.hostname;
+var targetNode = null;
 
 if (/momentumdash.com/.test(hostname)) {
     const parent = document.getElementById('background');
@@ -8,9 +9,11 @@ if (/momentumdash.com/.test(hostname)) {
     targetNode = document.getElementById('bgDiv');
 }
 
-const url = getImageUrl(targetNode);
+console.log('getImageUrl');
+var url = getImageUrl(targetNode);
 
 if (url) {
+    console.log('sendRequest', url);
     chrome.extension.sendRequest(url ? resolveUrl(url) : '');
 }
 
